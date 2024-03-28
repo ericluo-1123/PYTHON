@@ -161,7 +161,9 @@ def Indent(message):
 def LoggerLoad(loggers, filename, level):
 
     try:
-        
+
+        logger = None
+
         LOGGING = {
             'version': 1,
             'disable_existing_loggers': False,
@@ -239,10 +241,11 @@ def LoggerLoad(loggers, filename, level):
 def Logging(config, level, message):
     
     try:
+
+        logger = None
             
         #[logger]
         loggers = ConfigGet(config, 'logger', 'loggers', 'all')
-        gen_level = ConfigGet(config, 'logger', 'level', 'system.log')
         file_name = ConfigGet(config, 'logger', 'file_name', 'system.log')
         level = ConfigGet(config, 'logger', 'level', 'INFO')
         
@@ -265,13 +268,13 @@ def Logging(config, level, message):
             'handlers': {
                 'console': {  # the name of handler
                     'class': 'logging.StreamHandler',  # emit to sys.stderr(default)
-                    'level': '{}'.format(gen_level),
+                    'level': '{}'.format(level),
                     'formatter': 'normal',  # use the above "normal" formatter
                     'stream': 'ext://sys.stdout',
                 },
                 'file': {  # the name of handler
                     'class': 'logging.FileHandler',  # emit to disk file
-                    'level': '{}'.format(gen_level),
+                    'level': '{}'.format(level),
                     'filename': '{}'.format(file_name),  # the path of the log file
                     'formatter': 'normal',  # use the above "normal" formatter
                     # 'maxBytes': '5242880',
@@ -318,7 +321,7 @@ def Logging(config, level, message):
     except Exception as e:    
         print(e)
     finally:
-        if logger.hasHandlers() == True:
+        if logger != None and logger.hasHandlers() == True:
             if level == "INFO":
                 logger.info("{}".format(Indent(message)))
             elif level == "DEBUG":

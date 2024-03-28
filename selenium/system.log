@@ -1,0 +1,35 @@
+[2024-03-28 16:53:19     INFO] {'item': 'get', 'data': 'https://10.1.1.5/Login.asp'}
+[2024-03-28 16:53:40     INFO] Message: unknown error: net::ERR_CONNECTION_TIMED_OUT
+                                 (Session info: chrome-headless-shell=123.0.6312.60)
+                               Stacktrace:
+                               	GetHandleVerifier [0x00007FF653A170C2+63090]
+                               	(No symbol) [0x00007FF653982D12]
+                               	(No symbol) [0x00007FF65381EC65]
+                               	(No symbol) [0x00007FF65381AC1A]
+                               	(No symbol) [0x00007FF65380D514]
+                               	(No symbol) [0x00007FF65380E8F8]
+                               	(No symbol) [0x00007FF65380D7FF]
+                               	(No symbol) [0x00007FF65380D104]
+                               	(No symbol) [0x00007FF65380D021]
+                               	(No symbol) [0x00007FF65380B0A8]
+                               	(No symbol) [0x00007FF65380B8BC]
+                               	(No symbol) [0x00007FF6538214AD]
+                               	(No symbol) [0x00007FF6538A3D67]
+                               	(No symbol) [0x00007FF653886FDA]
+                               	(No symbol) [0x00007FF6538A3412]
+                               	(No symbol) [0x00007FF653886D83]
+                               	(No symbol) [0x00007FF6538583A8]
+                               	(No symbol) [0x00007FF653859441]
+                               	GetHandleVerifier [0x00007FF653E1262D+4238301]
+                               	GetHandleVerifier [0x00007FF653E4F78D+4488509]
+                               	GetHandleVerifier [0x00007FF653E47A6F+4456479]
+                               	GetHandleVerifier [0x00007FF653AF0606+953270]
+                               	(No symbol) [0x00007FF65398E5DF]
+                               	(No symbol) [0x00007FF6539892B4]
+                               	(No symbol) [0x00007FF6539893EB]
+                               	(No symbol) [0x00007FF653979C24]
+                               	BaseThreadInitThunk [0x00007FFF89E67344+20]
+                               	RtlUserThreadStart [0x00007FFF8BBA26B1+33]
+
+[2024-03-28 16:53:40     INFO] Result : FAIL
+[2024-03-28 16:53:43     INFO] Finish.

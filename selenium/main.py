@@ -206,13 +206,13 @@ if __name__ == '__main__':
         
         config_data = PyConfigParser()
         config = PyConfigParser()
-        config.read(method.PathGetCurrent('selenium.ini'))
+        config.read(method.PathGetCurrent('config.ini'))
         #[env]
-        output_file_name = method.ConfigGet(config, 'env', 'output_file_name', 'selenium_output.txt')
+        output_file_name = method.ConfigGet(config, 'env', 'output_file_name', 'output.txt')
         method.FileDelete(method.PathGetCurrent(output_file_name))
         #[logger]
         # loggers = method.ConfigGet(config, 'logger', 'loggers', 'all')
-        logger_file_name = method.ConfigGet(config, 'logger', 'file_name', 'selenium.log')
+        logger_file_name = method.ConfigGet(config, 'logger', 'file_name', 'sys.log')
         # logger_level = method.ConfigGet(config, 'logger', 'level', 'INFO')
         method.FileDelete(method.PathGetCurrent(logger_file_name))
         # logger = method.LoggerLoad(loggers, logger_file_name, logger_level)
@@ -238,7 +238,7 @@ if __name__ == '__main__':
 
         result = True
         output = False
-        with open('selenium_script.txt', newline='') as csvfile:
+        with open('script.txt', newline='') as csvfile:
             rows = csv.reader(csvfile)
             for row in rows:
                 if method.PathIsExist(method.PathGetCurrent('STOP')) == True: 
