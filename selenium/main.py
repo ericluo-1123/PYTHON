@@ -4,6 +4,11 @@ Created on 2024年2月27日
 @author: ericluo
 '''
 
+import os
+import sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+path_current_dir = os.path.dirname(os.path.abspath(__file__))
+
 # selenium
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -13,12 +18,11 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 
+
 import csv
 import time
-import method
-from method import PyConfigParser
-
-
+from normal import method
+# from normal.method import PyConfigParser
 
 def RunSelenium(config, driver, config_data, **kwargs):
     
@@ -150,7 +154,7 @@ def RunSelenium(config, driver, config_data, **kwargs):
                 elif item == 'perform':
                     control.perform()#執行儲存的動作。
                 elif item == 'text':
-                    method.Logging(config, 'INFO', '{} = {}'.format(option, control.text))
+                    method.Logging(config, path_current_dir, 'INFO', '{} = {}'.format(option, control.text))
                     method.ConfigAdd(config_data, section, option, control.text)#元素的內容文字。
                 elif item == 'get_attr_name':
                     method.ConfigAdd(config_data, 'Selenium', 'get_attr_name', control.get_attr_name(data))#元素的某個 HTML 屬性值。
@@ -188,9 +192,9 @@ def RunSelenium(config, driver, config_data, **kwargs):
             result = True
         
     except Exception as e:
-        method.Logging(config, 'ERROR', '{}'.format(e))    
+        method.Logging(config, path_current_dir, 'ERROR', '{}'.format(e))    
     finally:
-        if method.PathIsExist(method.PathGetCurrent('STOP')) == True: result = False
+        if method.PathIsExist(method.PathJoin(path_current_dir, 'STOP')) == True: result = False
         return result
     
 if __name__ == '__main__':
@@ -200,21 +204,21 @@ if __name__ == '__main__':
 
         driver = None
         
-        method.FileDelete(method.PathGetCurrent('PASS'))
-        method.FileDelete(method.PathGetCurrent('FAIL'))
-        method.FileDelete(method.PathGetCurrent('STOP'))
+        method.FileDelete(method.PathJoin(path_current_dir, 'PASS'))
+        method.FileDelete(method.PathJoin(path_current_dir, 'FAIL'))
+        method.FileDelete(method.PathJoin(path_current_dir, 'STOP'))
         
-        config_data = PyConfigParser()
-        config = PyConfigParser()
-        config.read(method.PathGetCurrent('config.ini'))
+        config_data = method.PyConfigParser()
+        config = method.PyConfigParser()
+        config.read(method.PathJoin(path_current_dir, 'config.ini'))
         #[env]
         output_file_name = method.ConfigGet(config, 'env', 'output_file_name', 'output.txt')
-        method.FileDelete(method.PathGetCurrent(output_file_name))
+        method.FileDelete(method.PathJoin(path_current_dir, output_file_name))
         #[logger]
         # loggers = method.ConfigGet(config, 'logger', 'loggers', 'all')
         logger_file_name = method.ConfigGet(config, 'logger', 'file_name', 'sys.log')
         # logger_level = method.ConfigGet(config, 'logger', 'level', 'INFO')
-        method.FileDelete(method.PathGetCurrent(logger_file_name))
+        method.FileDelete(method.PathJoin(path_current_dir, logger_file_name))
         # logger = method.LoggerLoad(loggers, logger_file_name, logger_level)
         # if logger == None: raise RuntimeError("LoggerLoad Fail.")
         
@@ -238,10 +242,10 @@ if __name__ == '__main__':
 
         result = True
         output = False
-        with open('script.txt', newline='') as csvfile:
+        with open(method.PathJoin(path_current_dir, 'script.txt'), newline='') as csvfile:
             rows = csv.reader(csvfile)
             for row in rows:
-                if method.PathIsExist(method.PathGetCurrent('STOP')) == True: 
+                if method.PathIsExist(method.PathJoin(path_current_dir, 'STOP')) == True: 
                     result = False
                     break
                 data = ', '.join(row)
@@ -249,25 +253,25 @@ if __name__ == '__main__':
                 if "item' : 'text'" in data:
                     output = True
                 res = eval(data)
-                method.Logging(config, 'INFO', '{}'.format(res))
+                method.Logging(config, path_current_dir, 'INFO', '{}'.format(res))
                 if RunSelenium(config, driver, config_data, **res) == False:
                     result = False
                     break
         
-        if method.PathIsExist(method.PathGetCurrent('STOP')) == True:
-            method.Logging(config, 'ERROR', 'User Stop.')
+        if method.PathIsExist(method.PathJoin(path_current_dir, 'STOP')) == True:
+            method.Logging(config, path_current_dir, 'ERROR', 'User Stop.')
              
         if result == True:
-            method.FileCreate(method.PathGetCurrent('PASS'))
-            method.Logging(config, 'INFO', 'Result : PASS')
+            method.FileCreate(method.PathJoin(path_current_dir, 'PASS'))
+            method.Logging(config, path_current_dir, 'INFO', 'Result : PASS')
         else:
-            method.FileCreate(method.PathGetCurrent('FAIL'))
-            method.Logging(config, 'INFO', 'Result : FAIL')
+            method.FileCreate(method.PathJoin(path_current_dir, 'FAIL'))
+            method.Logging(config, path_current_dir, 'INFO', 'Result : FAIL')
             
-        if output == True: method.ConfigWrite(config_data, method.PathGetCurrent(output_file_name))
+        if output == True: method.ConfigWrite(config_data, method.PathJoin(path_current_dir, output_file_name))
         
     except Exception as e:
-        method.Logging(config, 'ERROR', '{}'.format(e))
+        method.Logging(config, path_current_dir, 'ERROR', '{}'.format(e))
         pass
     
     finally:
@@ -276,9 +280,9 @@ if __name__ == '__main__':
                 driver.close()# 關閉瀏覽器視窗
                 driver.quit() # 離開瀏覽器
         except Exception as e:
-            method.Logging(config, 'ERROR', '{}'.format(e))
+            method.Logging(config, path_current_dir, 'ERROR', '{}'.format(e))
             
-        method.Logging(config, 'INFO', 'Finish.')
+        method.Logging(config, path_current_dir, 'INFO', 'Finish.')
     
         
     #ERROR

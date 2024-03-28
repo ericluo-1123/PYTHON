@@ -68,7 +68,6 @@ def PathIsExist(path):
 
 def PathGetCurrent(new = ''):
     path = os.path.abspath(os.getcwd())
-    if new: path = os.path.join(path, new)
     return path
 
 def PathJoin(path, *paths):      
@@ -238,7 +237,7 @@ def LoggerLoad(loggers, filename, level):
         else:
             return logger
 
-def Logging(config, level, message):
+def Logging(config, path, level, message):
     
     try:
 
@@ -275,7 +274,7 @@ def Logging(config, level, message):
                 'file': {  # the name of handler
                     'class': 'logging.FileHandler',  # emit to disk file
                     'level': '{}'.format(level),
-                    'filename': '{}'.format(file_name),  # the path of the log file
+                    'filename': '{}'.format(PathJoin(path, file_name)),  # the path of the log file
                     'formatter': 'normal',  # use the above "normal" formatter
                     # 'maxBytes': '5242880',
                     # 'backupCount': '1',

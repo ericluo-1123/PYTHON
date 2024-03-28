@@ -1,35 +1,36 @@
-[2024-03-28 16:53:19     INFO] {'item': 'get', 'data': 'https://10.1.1.5/Login.asp'}
-[2024-03-28 16:53:40     INFO] Message: unknown error: net::ERR_CONNECTION_TIMED_OUT
+[2024-03-28 19:17:06     INFO] {'item': 'get', 'data': 'https://10.1.1.5/Login.asp'}
+[2024-03-28 19:17:30     INFO] Message: unknown error: net::ERR_CONNECTION_TIMED_OUT
                                  (Session info: chrome-headless-shell=123.0.6312.60)
                                Stacktrace:
-                               	GetHandleVerifier [0x00007FF653A170C2+63090]
-                               	(No symbol) [0x00007FF653982D12]
-                               	(No symbol) [0x00007FF65381EC65]
-                               	(No symbol) [0x00007FF65381AC1A]
-                               	(No symbol) [0x00007FF65380D514]
-                               	(No symbol) [0x00007FF65380E8F8]
-                               	(No symbol) [0x00007FF65380D7FF]
-                               	(No symbol) [0x00007FF65380D104]
-                               	(No symbol) [0x00007FF65380D021]
-                               	(No symbol) [0x00007FF65380B0A8]
-                               	(No symbol) [0x00007FF65380B8BC]
-                               	(No symbol) [0x00007FF6538214AD]
-                               	(No symbol) [0x00007FF6538A3D67]
-                               	(No symbol) [0x00007FF653886FDA]
-                               	(No symbol) [0x00007FF6538A3412]
-                               	(No symbol) [0x00007FF653886D83]
-                               	(No symbol) [0x00007FF6538583A8]
-                               	(No symbol) [0x00007FF653859441]
-                               	GetHandleVerifier [0x00007FF653E1262D+4238301]
-                               	GetHandleVerifier [0x00007FF653E4F78D+4488509]
-                               	GetHandleVerifier [0x00007FF653E47A6F+4456479]
-                               	GetHandleVerifier [0x00007FF653AF0606+953270]
-                               	(No symbol) [0x00007FF65398E5DF]
-                               	(No symbol) [0x00007FF6539892B4]
-                               	(No symbol) [0x00007FF6539893EB]
-                               	(No symbol) [0x00007FF653979C24]
+                               	GetHandleVerifier [0x00007FF7941270C2+63090]
+                               	(No symbol) [0x00007FF794092D12]
+                               	(No symbol) [0x00007FF793F2EC65]
+                               	(No symbol) [0x00007FF793F2AC1A]
+                               	(No symbol) [0x00007FF793F1D514]
+                               	(No symbol) [0x00007FF793F1E8F8]
+                               	(No symbol) [0x00007FF793F1D7FF]
+                               	(No symbol) [0x00007FF793F1D104]
+                               	(No symbol) [0x00007FF793F1D021]
+                               	(No symbol) [0x00007FF793F1B0A8]
+                               	(No symbol) [0x00007FF793F1B8BC]
+                               	(No symbol) [0x00007FF793F314AD]
+                               	(No symbol) [0x00007FF793FB3D67]
+                               	(No symbol) [0x00007FF793F96FDA]
+                               	(No symbol) [0x00007FF793FB3412]
+                               	(No symbol) [0x00007FF793F96D83]
+                               	(No symbol) [0x00007FF793F683A8]
+                               	(No symbol) [0x00007FF793F69441]
+                               	GetHandleVerifier [0x00007FF79452262D+4238301]
+                               	GetHandleVerifier [0x00007FF79455F78D+4488509]
+                               	GetHandleVerifier [0x00007FF794557A6F+4456479]
+                               	GetHandleVerifier [0x00007FF794200606+953270]
+                               	(No symbol) [0x00007FF79409E5DF]
+                               	(No symbol) [0x00007FF7940992B4]
+                               	(No symbol) [0x00007FF7940993EB]
+                               	(No symbol) [0x00007FF794089C24]
                                	BaseThreadInitThunk [0x00007FFF89E67344+20]
                                	RtlUserThreadStart [0x00007FFF8BBA26B1+33]
 
-[2024-03-28 16:53:40     INFO] Result : FAIL
-[2024-03-28 16:53:43     INFO] Finish.
+[2024-03-28 19:17:30     INFO] User Stop.
+[2024-03-28 19:17:30     INFO] Result : FAIL
+[2024-03-28 19:17:32     INFO] Finish.
