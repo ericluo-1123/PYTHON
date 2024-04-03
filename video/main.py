@@ -28,7 +28,7 @@ import autoit
 
 def RunSelenium(config, driver, config_data, **kwargs):
     
-    timeout = kwargs.get('timeout', '5')
+    timeout = kwargs.get('timeout', '20')
     freq = kwargs.get('freq', '0.5')
     xpath = kwargs.get('xpath', '')
     item = kwargs.get('item', '') 
@@ -48,6 +48,8 @@ def RunSelenium(config, driver, config_data, **kwargs):
             if item == 'sleep':
                 time.sleep(float(data)) #等待(秒)。
             elif item == 'get': #開啟網址。
+                driver.set_page_load_timeout(int(timeout))
+                driver.set_script_timeout(int(timeout))
                 driver.get(data)
             elif item == 'refresh':
                 driver.refresh() #網頁重整。
