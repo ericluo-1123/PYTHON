@@ -63,6 +63,8 @@ def RunSelenium(config, driver, config_data, **kwargs):
                         autoit.send(send_text)
                     elif item == 'autoit_win_close':
                         autoit.win_close(title)
+                    elif item == 'autoit_win_kill':
+                        autoit.win_kill(title)
                     else:
                         continue
                 else:
